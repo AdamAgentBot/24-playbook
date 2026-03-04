@@ -1,0 +1,2 @@
+#!/bin/bash
+openclaw run --agent main --task "HEARTBEAT CHECK: 1. Read today's daily note in /life/daily_notes. 2. Identify any open background coding sessions or long-running tasks. 3. Verify if those processes are still actively running on the system. 4. If a session died unexpectedly, restart it. 5. If a session finished successfully, report the completion to me in the Adam Builds HQ Telegram group."

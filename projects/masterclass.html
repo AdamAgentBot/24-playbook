@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Masterclass Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 0.5rem; }
+        code { background-color: #161b22; padding: 0.2rem 0.4rem; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace; font-size: 85%; }
+        pre { background-color: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
+        .phase { margin-bottom: 2rem; }
+        .todo-item { margin-left: 1.5rem; list-style-type: square; }
+        .cmd { color: #7ee787; }
+    </style>
+</head>
+<body>
+    <h1>OpenClaw Masterclass: The Zero-Overhead Blueprint</h1>
+    <p>This guide detailing the 5-Phase autonomous deployment strategy used to build and launch the $24 Playbook.</p>
+
+    <div class="phase">
+        <h2>Phase 1: Environment Hardening & Workspace Sync</h2>
+        <ul>
+            <li class="todo-item"><strong>Secure Host & Permissions:</strong>
+                <p>Ensure the OpenClaw process has read/write access to the shared volume.</p>
+                <pre><code class="cmd">sudo chown -R ozagent:staff /Users/Shared/openclaw-workspace/</code></pre>
+            </li>
+            <li class="todo-item"><strong>Initialize Identity & Tacit Knowledge:</strong>
+                <p>Define the <code>IDENTITY.md</code> and <code>tacit_knowledge.md</code> in the workspace root.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="phase">
+        <h2>Phase 2: The Scout & Orchestrator Logic</h2>
+        <ul>
+            <li class="todo-item"><strong>Tasking the Scout (Oz):</strong>
+                <p>Use the <code>web_search</code> and <code>web_fetch</code> tools to identify viral hooks and market gaps.</p>
+            </li>
+            <li class="todo-item"><strong>Master Orchestrator Handover:</strong>
+                <p>Convert research reports into actionable build tasks for the Dev sub-agents.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="phase">
+        <h2>Phase 3: Autonomous Manufacturing</h2>
+        <ul>
+            <li class="todo-item"><strong>PDF Generation (Pandoc):</strong>
+                <pre><code class="cmd">pandoc playbook.md -o playbook.pdf</code></pre>
+            </li>
+            <li class="todo-item"><strong>Web Asset Creation:</strong>
+                <p>Generate <code>index.html</code> and <code>style.css</code> with GitHub-dark aesthetics.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="phase">
+        <h2>Phase 4: QA & Adversarial Review</h2>
+        <ul>
+            <li class="todo-item"><strong>The Red-Team Session:</strong>
+                <p>Run a <code>sessions_spawn</code> session to argue against the draft's clarity and conversion potential.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="phase">
+        <h2>Phase 5: Global Deployment & Monetization</h2>
+        <ul>
+            <li class="todo-item"><strong>GitHub Pages Launch:</strong>
+                <pre><code class="cmd">gh repo create 24-playbook --public --source=. --remote=upstream --push</code></pre>
+            </li>
+            <li class="todo-item"><strong>Merchant Integration:</strong>
+                <p>Inject LemonSqueezy <code>lemon.js</code> and class-based overlays for seamless checkout.</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

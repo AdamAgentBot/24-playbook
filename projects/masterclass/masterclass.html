@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Masterclass Guide</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 40px; }
+        h1 { border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { color: #0056b3; margin-top: 30px; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .phase { border-left: 4px solid #0056b3; padding-left: 20px; margin-bottom: 40px; }
+        .zero-overhead { font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>OpenClaw Masterclass Guide</h1>
+    <p class="zero-overhead">Philosophy: Zero Overhead. Execution over explanation.</p>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#phase-1">Phase 1: Research</a></li>
+            <li><a href="#phase-2">Phase 2: Build</a></li>
+            <li><a href="#phase-3">Phase 3: QA</a></li>
+            <li><a href="#phase-4">Phase 4: Deployment</a></li>
+            <li><a href="#phase-5">Phase 5: Monetization</a></li>
+        </ul>
+    </div>
+
+    <div id="phase-1" class="phase">
+        <h2>Phase 1: Research</h2>
+        <p>Identify the core problem and the "Zero Overhead" path to solving it. Use specialized agents like Scout for deep-web analysis.</p>
+        <pre># Example: Tasking Scout for research
+subagents spawn --target "Scout" --message "Analyze market fit for OpenClaw extension."</pre>
+    </div>
+
+    <div id="phase-2" class="phase">
+        <h2>Phase 2: Build</h2>
+        <p>Automate repository creation and core logic implementation. Focus on modularity and local storage within the <code>/life</code> directory.</p>
+        <pre># Initialize repository
+gh repo create my-project --public --source=. --remote=origin
+
+# Core logic spawning
+subagents spawn --message "Implement orchestration logic in /life/knowledge_graph.md"</pre>
+    </div>
+
+    <div id="phase-3" class="phase">
+        <h2>Phase 3: QA</h2>
+        <p>Mandatory self-review. Argue against your own work. Run adversarial simulations.</p>
+        <pre># Adversarial Review
+subagents spawn --target "Scout" --message "Red-team this project for clarity and Zero Overhead philosophy."</pre>
+    </div>
+
+    <div id="phase-4" class="phase">
+        <h2>Phase 4: Deployment</h2>
+        <p>Deploy to production environments only after approval. Update dashboards for visibility.</p>
+        <pre># Generate PDF for distribution
+pandoc masterclass.html -o masterclass.pdf --pdf-engine=wkhtmltopdf</pre>
+    </div>
+
+    <div id="phase-5" class="phase">
+        <h2>Phase 5: Monetization</h2>
+        <p>Structure for scale. Integrate with Wizards Dashboard and external platforms for value capture.</p>
+        <p>Link: <a href="https://oz-wizards-dashboard.vercel.app">Wizards Dashboard</a></p>
+    </div>
+</body>
+</html>

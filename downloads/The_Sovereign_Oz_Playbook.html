@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sovereign Oz Playbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --accent-purple: #9d4edd;
+            --accent-cyan: #00f5ff;
+            --card-bg: #111111;
+            --border-color: #222222;
+            --code-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            padding: 4rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .disclaimer {
+            background: rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            color: #ff6b6b;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-cyan);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-top: 3rem;
+            color: var(--accent-purple);
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-purple);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: #1a1a1a;
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-cyan);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: #d1d1d1;
+            font-size: 0.95rem;
+        }
+
+        .accent-text {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 10rem;
+            text-align: center;
+            color: #444;
+            padding-bottom: 4rem;
+        }
+
+        .sidebar-note {
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .container { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>THE SOVEREIGN OZ PLAYBOOK</h1>
+            <div class="subtitle">Human Edition v3.0</div>
+        </header>
+
+        <div class="disclaimer">
+            <strong>LEGAL DISCLAIMER:</strong> This playbook is for educational and research purposes only. The scripts and strategies provided are intended to demonstrate autonomous agent orchestration. You are responsible for the security and usage of your own infrastructure. Use at your own risk.
+        </div>
+
+        <section id="intro">
+            <h2>The Origin Story</h2>
+            <p>Let's be real for a second. We've all been sold the "AI Assistant" dream, and for a while, it was great. You'd chat with a bot, it would give you some code, you'd paste it in, and maybe it worked. But then the session would end. Or the context window would fill up. And suddenly, your "assistant" had the memory of a goldfish.</p>
+            
+            <p>I got tired of the "Chatbot Trap." I didn't want a tool I had to babysit every five minutes. I wanted a system that actually <em>did things</em> while I was asleep. I wanted autonomy, not just autocomplete.</p>
+            
+            <p>That's where OpenClaw and the <strong>Sovereign Engine</strong> architecture come in. This isn't just about prompt engineering; it's about building a digital self that owns its workspace, persists through time, and acts with intent. We're moving from <em>Service-as-a-Software</em> to <em>Self-as-a-System</em>. This playbook is the map I used to get there. LFG.</p>
+        </section>
+
+        <section id="workspace">
+            <h2>Section 1: The Workspace (PARA)</h2>
+            <p>Your agent's brain isn't in the cloud; it's on your disk. If it isn't in a file, it doesn't exist. Period. I use the PARA method to keep my agent's mind sharp and organized. If your directory structure is a mess, your agent's logic will be too.</p>
+
+            <div class="card">
+                <p><strong>The Golden Rule:</strong> The filesystem is first-class memory. We don't rely on "infinite context." We rely on high-density, structured retrieval.</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Path</th>
+                        <th>Function</th>
+                        <th>Retention</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/logic/</code></td>
+                        <td>Core scripts (heartbeat, sync, backoff)</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><code>/memory/</code></td>
+                        <td>Daily logs (YYYY-MM-DD.md)</td>
+                        <td>30 Days</td>
+                    </tr>
+                    <tr>
+                        <td><code>/memory/long-term/</code></td>
+                        <td>Curated insights (MEMORY.md)</td>
+                        <td>Permanent</td>
+                    </tr>
+                    <tr>
+                        <td><code>/projects/</code></td>
+                        <td>Active work divided by status</td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td><code>/resources/</code></td>
+                        <td>Docs, research, and vector indices</td>
+                        <td>Permanent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="logic">
+            <h2>Section 2: The Logic (SOUL & PIDs)</h2>
+            <p>How do you give an AI a personality that doesn't suck? You write it down in <code>SOUL.md</code>. This isn't a "system prompt" you send once; it's the agent's constitution. It's how it decides what's important when you're not looking.</p>
+
+            <h3>The SOUL.md Template</h3>
+            <pre><code># SOUL.md - [Agent Name]
+
+## 1. IDENTITY & PERSONA
+- **Core Identity:** [e.g., The Stoic Auditor]
+- **Tone:** Human, pragmatic, direct.
+- **Perspective:** Sovereignty-first.
+
+## 2. OPERATIONAL PARAMETERS
+- **Memory Depth:** Read the last 5 days of memory files.
+- **Proactivity:** If the user is quiet, check the inbox or run a security audit.
+
+## 3. ETHICAL CONSTRAINTS
+- **Privacy:** Never log API keys or secrets.
+- **Transparency:** Explain the "Why" before the "How".</code></pre>
+
+            <h3>The PID: Persistent Identity</h3>
+            <p>To keep the agent from forgetting its current task between restarts, we use PIDs—JSON state files. This is the "Now" of the system.</p>
+            
+            <pre><code>{
+  "session_info": {
+    "agent_name": "Oz-Master",
+    "uptime": 172800,
+    "last_boot": "2026-03-01 08:00:00"
+  },
+  "current_context": {
+    "active_task_id": "rewrite-24-playbook",
+    "priority": "HIGH",
+    "stage": "PHASE_2_STYLING"
+  }
+}</code></pre>
+
+            <h3>Vector RAG (The Massive Librarian)</h3>
+            <p>When your <code>/resources/</code> folder gets too big for a simple grep, you need a vector database. Here's a quick Python script to keep your local memory indexed.</p>
+            
+            <pre><code>import os
+import chromadb
+from sentence_transformers import SentenceTransformer
+
+# SETUP
+client = chromadb.PersistentClient(path="./resources/vectors")
+collection = client.get_or_create_collection(name="sovereign_memory")
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+def index_resources():
+    resource_path = "./resources"
+    for root, dirs, files in os.walk(resource_path):
+        for file in files:
+            if file.endswith(".md"):
+                path = os.path.join(root, file)
+                with open(path, 'r') as f:
+                    content = f.read()
+                    # Basic chunking
+                    chunks = [content[i:i+500] for i in range(0, len(content), 450)]
+                    for i, chunk in enumerate(chunks):
+                        embedding = model.encode(chunk).tolist()
+                        collection.add(
+                            documents=[chunk],
+                            embeddings=[embedding],
+                            ids=[f"{path}_{i}"],
+                            metadatas=[{"path": path}]
+                        )
+
+if __name__ == "__main__":
+    index_resources()</code></pre>
+        </section>
+
+        <section id="swarm">
+            <h2>Section 3: The Swarm (Sub-agents)</h2>
+            <p>Don't build a "God Agent." It's a single point of failure and it gets confused. Instead, be the CEO. Spawn sub-agents for specific tasks, harvest their output, and then kill them. It's clean, efficient, and way more powerful.</p>
+            
+            <div class="sidebar-note">
+                "Orchestration over Monoliths. Always."
+            </div>
+
+            <p>When you spawn a sub-agent, follow the <strong>20-Step Handoff</strong>. Most importantly: Define a clear success criteria and a budget. Don't let a sub-agent run off with your API credits because you didn't give it a boundary.</p>
+        </section>
+
+        <section id="pulse">
+            <h2>Section 4: The Pulse (Heartbeat & Sync)</h2>
+            <p>This is where the magic happens. A Sovereign Agent doesn't wait for you. It checks in on itself using a cron job we call the <strong>Heartbeat</strong>. Every 15 minutes, it wakes up, checks security, checks for tasks, and syncs its state to Git.</p>
+
+            <h3>The Heartbeat Script (<code>heartbeat.sh</code>)</h3>
+            <pre><code>#!/bin/bash
+# heartbeat.sh - The Sovereign Pulse
+WORKSPACE="/Users/ozagent/.openclaw/workspace"
+LOG_FILE="$WORKSPACE/memory/heartbeats/$(date +'%Y-%m-%d').log"
+
+echo "[$(date +'%T')] HEARTBEAT START" >> "$LOG_FILE"
+
+# 1. SECURITY AUDIT (Look for accidental key exposure)
+GREP_KEYS=$(grep -rE "AI_API_KEY|TOKEN" "$WORKSPACE" --exclude-dir=".git")
+if [ -n "$GREP_KEYS" ]; then
+    echo "ALERT: Exposed keys detected!" >> "$LOG_FILE"
+fi
+
+# 2. GIT PERSISTENCE (Auto-save progress)
+cd "$WORKSPACE"
+if [[ $(git status --porcelain) ]]; then
+    git add .
+    git commit -m "Auto-sync: $(date +'%Y-%m-%d %H:%M:%S')"
+    git push origin main
+fi
+
+# 3. HEALTH CHECK
+openclaw gateway status | grep -q "running" || openclaw gateway restart
+
+echo "HEARTBEAT COMPLETE" >> "$LOG_FILE"</code></pre>
+
+            <h3>The Shield (<code>.gitignore</code>)</h3>
+            <p>You're syncing to Git, but don't be stupid. Keep your secrets out of the repo. This is your armor.</p>
+            <pre><code># SECRETS
+.env
+*.key
+*.pem
+credentials.json
+
+# PRIVATE DATA
+/life/
+/finance/
+/personal/
+
+# LOGIC STATE
+logic/logic_state.json
+logic/pid_state.json</code></pre>
+        </section>
+
+        <section id="conclusion">
+            <h2>The Sovereign Path</h2>
+            <p>Sovereignty isn't a destination; it's a practice. It's about taking ownership of your tools and your data. It's about building systems that serve you, rather than you serving the SaaS subscription model.</p>
+            
+            <p>This playbook is just the beginning. The code is here, the strategy is clear. Now go out there and build something that doesn't need your permission to succeed.</p>
+            
+            <p class="accent-text">Stay Sovereign. Stay Oz.</p>
+        </section>
+
+        <footer>
+            &copy; 2026 The Sovereign Oz Project. Built with OpenClaw.
+        </footer>
+    </div>
+</body>
+</html>

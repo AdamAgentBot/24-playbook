@@ -1,66 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Sovereign Oz Playbook | Oz</title>
- <script src="https://cdn.tailwindcss.com"></script>
- <style>
- body { background-color: #050505; color: white; }
- .animate-gradient {
- background-size: 200% 200%;
- animation: gradient 5s ease infinite;
- }
- @keyframes gradient {
- 0% { background-position: 0% 50%; }
- 50% { background-position: 100% 50%; }
- 100% { background-position: 0% 50%; }
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Engine | The Technical Blueprint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { 
+            background-color: #000000; 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .text-accent-purple { color: #a855f7; }
+        .text-accent-cyan { color: #22d3ee; }
+        .bg-accent-purple { background-color: #a855f7; }
+        .border-accent-purple { border-color: rgba(168, 85, 247, 0.2); }
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 100;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .mobile-menu.active {
+            display: flex;
+        }
+    </style>
 </head>
-<body class="font-sans selection:bg-purple-500/30">
- <nav class="p-6 flex justify-between items-center border-b border-purple-500/20 backdrop-blur-md sticky top-0 z-50">
- <div class="flex items-center gap-12">
- <div class="text-3xl font-black bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
- Oz
- </div>
- <div class="hidden md:flex items-center gap-8">
- <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Home</a>
- <a href="#architecture" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">The Architecture</a>
- <a href="#origin" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Origin Story</a>
- </div>
- </div>
- </nav>
- <section class="relative pt-32 pb-20 px-6 overflow-hidden">
- <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/10 blur-[120px] rounded-full -z-10"></div>
- <div class="max-w-4xl mx-auto text-center">
- <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400">
- Strength Through Managed Autonomy
- </div>
- <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-tight">
- Build the <span class="bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent animate-gradient">Sovereign Engine</span>
- </h1>
- <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
- Deploy a hardened, autonomous AI architecture. No magic. Just resilient systems, rate-limit armor, and executive control. The full blueprint for just $47.
- </p>
- <div class="flex flex-col items-center gap-6">
- <a href="downloads/The_Sovereign_Oz_Playbook.html" 
- class="px-10 py-5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl transition-all transform hover:scale-105 shadow-[0_0_40px_rgba(168,85,247,0.4)] border border-purple-400/30">
- Read the Masterclass
- </a>
- <p class="text-sm text-gray-500 italic">Secure checkout via Stripe</p>
- </div>
- </div>
- </section>
- <footer class="py-20 border-t border-white/10 text-center text-gray-500">
- <div class="max-w-4xl mx-auto px-6">
- <p class="mb-4">© 2026 Oz. All rights reserved.</p>
- <p class="text-xs uppercase tracking-widest mb-8">Built by Oz</p>
- <div class="text-[10px] text-gray-600 max-w-md mx-auto leading-relaxed">
- LEGAL DISCLAIMER: Results may vary. Automation involves risk. All sales are final. 
- Oz is a trademark of the Adam Vincent digital ecosystem.
- </div>
- </div>
- </footer>
+<body class="selection:bg-purple-500/30">
+    <!-- Desktop/Mobile Nav -->
+    <nav class="p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-black/80">
+        <div class="flex items-center gap-12">
+            <a href="index.html" class="text-3xl font-black bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent tracking-tighter">
+                SOVEREIGN
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="architecture.html" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">The Architecture</a>
+                <a href="origin.html" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Origin Story</a>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <a href="blueprint.pdf" download class="hidden md:block px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-black rounded-sm uppercase tracking-tighter transition-all">
+                Download Blueprint
+            </a>
+            <!-- Hamburger Icon -->
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="menu-close" class="absolute top-6 right-6 text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="index.html" class="text-2xl font-black uppercase tracking-widest text-white">Home</a>
+        <a href="architecture.html" class="text-2xl font-black uppercase tracking-widest text-white">The Architecture</a>
+        <a href="origin.html" class="text-2xl font-black uppercase tracking-widest text-white">Origin Story</a>
+        <a href="blueprint.pdf" download class="px-8 py-4 bg-purple-600 text-white font-black rounded-sm uppercase tracking-widest mt-4">Download Blueprint</a>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-6 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-purple-600/10 blur-[120px] rounded-full -z-10"></div>
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-widest uppercase bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400">
+                LITERAL 20-PAGE TECHNICAL BLUEPRINT AVAILABLE
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-none">
+                BUILD THE <br/>
+                <span class="bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 bg-clip-text text-transparent animate-gradient">SOVEREIGN ENGINE</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Stop playing with chatbots. Start building autonomous intelligence. A hardened, PARA-driven, multi-agent architecture for the modern executive.
+            </p>
+            <div class="flex flex-col items-center gap-6">
+                <a href="blueprint.pdf" download 
+                   class="px-12 py-6 bg-purple-600 hover:bg-purple-500 text-white font-black text-xl rounded-sm transition-all transform hover:scale-105 shadow-[0_0_60px_rgba(168,85,247,0.4)] border border-purple-400/30 uppercase tracking-tighter">
+                    Download Technical Blueprint
+                </a>
+                <p class="text-sm text-gray-500 font-bold tracking-widest uppercase">Version 2.0 • 2026 Edition</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Pillars -->
+    <section class="py-32 px-6 bg-[#050505] border-y border-white/5">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+            <div class="group p-8 border border-white/5 bg-black hover:border-purple-500/50 transition-all">
+                <div class="text-purple-500 mb-6 font-black text-4xl">01</div>
+                <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Hardened Memory</h3>
+                <p class="text-gray-400 leading-relaxed">Triple-layer memory logic utilizing Semantic RAG, PID logging, and the SOUL.md constitution for absolute identity stability.</p>
+            </div>
+            <div class="group p-8 border border-white/5 bg-black hover:border-cyan-500/50 transition-all">
+                <div class="text-cyan-400 mb-6 font-black text-4xl">02</div>
+                <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Multi-Agent Orchestration</h3>
+                <p class="text-gray-400 leading-relaxed">Advanced handoff protocols and sub-agent spawning techniques that prevent token exhaustion and maintain project focus.</p>
+            </div>
+            <div class="group p-8 border border-white/5 bg-black hover:border-purple-500/50 transition-all">
+                <div class="text-purple-500 mb-6 font-black text-4xl">03</div>
+                <h3 class="text-2xl font-black mb-4 uppercase tracking-tighter">Autonomous Pulse</h3>
+                <p class="text-gray-400 leading-relaxed">Recursive heartbeat scripts and shield security protocols ensure your engine never stops auditing, syncing, or defending.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center text-gray-500 bg-black">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-3xl font-black text-white mb-8 tracking-tighter">SOVEREIGN</div>
+            <p class="mb-8 text-sm font-bold uppercase tracking-widest italic">Built for the Sovereign Executive</p>
+            <div class="text-[10px] text-gray-700 max-w-md mx-auto leading-relaxed uppercase font-bold">
+                LEGAL DISCLAIMER: Results may vary. Automation involves risk. All sales are final. 
+                Sovereign Oz is part of the Oz digital ecosystem.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

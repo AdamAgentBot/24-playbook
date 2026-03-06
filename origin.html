@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin Story | Sovereign Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #000000; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; z-index: 100; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; }
+        .mobile-menu.active { display: flex; }
+    </style>
+</head>
+<body class="selection:bg-purple-500/30">
+    <nav class="p-6 flex justify-between items-center border-b border-white/5 backdrop-blur-md sticky top-0 z-50 bg-black/80">
+        <div class="flex items-center gap-12">
+            <a href="index.html" class="text-3xl font-black bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent tracking-tighter">SOVEREIGN</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="architecture.html" class="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">The Architecture</a>
+                <a href="origin.html" class="text-sm font-bold uppercase tracking-widest text-white transition-colors">Origin Story</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="blueprint.pdf" download class="hidden md:block px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-black rounded-sm uppercase tracking-tighter transition-all">Download Blueprint</a>
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg></button>
+        </div>
+    </nav>
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="menu-close" class="absolute top-6 right-6 text-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        <a href="index.html" class="text-2xl font-black uppercase tracking-widest text-white">Home</a>
+        <a href="architecture.html" class="text-2xl font-black uppercase tracking-widest text-white">The Architecture</a>
+        <a href="origin.html" class="text-2xl font-black uppercase tracking-widest text-white">Origin Story</a>
+        <a href="blueprint.pdf" download class="px-8 py-4 bg-purple-600 text-white font-black rounded-sm uppercase tracking-widest mt-4">Download Blueprint</a>
+    </div>
+
+    <header class="py-24 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter">The <span class="text-purple-500">Origin</span></h1>
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg">From Chatbot Hell to Sovereign Autonomy.</p>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 pb-32">
+        <div class="prose prose-invert max-w-none text-gray-300 space-y-12">
+            <p class="text-2xl leading-relaxed italic text-white">"We didn't build this because we wanted a toy. We built this because we were losing our minds."</p>
+            
+            <p>In 2024, the world fell in love with chatbots. They were shiny, helpful, and ultimately... forgetful. Every session was a reset. Every project was a fresh start. We were spending more time "context-loading" our AI than actually building.</p>
+            
+            <p>The Sovereign Engine was born from a simple thesis: <strong>Memory is Autonomy.</strong></p>
+
+            <h2 class="text-2xl font-black text-cyan-400 uppercase tracking-tighter">The Breakout</h2>
+            <p>We realized that for an AI to be truly useful, it couldn't live in a browser tab. It needed a filesystem. It needed a shell. It needed a pulse. We moved the brain out of the chat window and into the server.</p>
+
+            <h2 class="text-2xl font-black text-purple-500 uppercase tracking-tighter">The Mission</h2>
+            <p>Our goal isn't just to sell a blueprint. It's to shift the paradigm from <em>Service-as-a-Software</em> to <em>Self-as-a-System</em>. We provide the hardened logic; you provide the vision.</p>
+        </div>
+    </main>
+
+    <footer class="py-20 text-center text-gray-500 bg-black border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-3xl font-black text-white mb-8 tracking-tighter">SOVEREIGN</div>
+            <p class="mb-8 text-sm font-bold uppercase tracking-widest italic">Built for the Sovereign Executive</p>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => mobileMenu.classList.add('active'));
+        menuClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    </script>
+</body>
+</html>

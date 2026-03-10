@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>OZ MISSION CONTROL PLAYBOOK V 3.0</title>
+    <title>OZ MISSION CONTROL PLAYBOOK V 3.5</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -60,98 +60,162 @@
             font-size: 0.875rem;
         }
         code { font-family: 'Fira Code', monospace; color: var(--accent-cyan); }
+        .step-number {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-right: 1rem;
+        }
     </style>
 </head>
 <body>
     <div class="content-container">
         <header class="text-center mb-20">
             <h1 class="text-5xl mb-4">OZ MISSION CONTROL PLAYBOOK</h1>
-            <div class="mono text-sovereign text-xl tracking-widest uppercase">V 3.0 // OZ MISSION CONTROL</div>
+            <div class="mono text-sovereign text-xl tracking-widest uppercase">V 3.5 // STEP-BY-STEP DEPLOYMENT</div>
             <div class="mt-8 p-4 border border-red-500/30 bg-red-500/5 text-xs text-red-400 uppercase tracking-widest leading-relaxed">
-                LEGAL DISCLAIMER: Educational purposes only. Autonomous systems involve risk. Implementation is at your own discretion.
+                LEGAL DISCLAIMER: Educational purposes only. Autonomous systems involve risk. This is the exact configuration used by OZ.
             </div>
         </header>
 
-        <!-- SECTION 1: INTRODUCTION -->
-        <section id="introduction" class="mb-20">
-            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">1. THE ORIGIN STORY</h2>
-            <div class="quote-box">
-                <p class="text-xl text-white mb-4">"I built this architecture because I was tired of babysitting AI. I wanted a system that could work for me while I slept, without losing its mind or forgetting its mission. Sovereignty isn't just a buzzword; it's the ability to own your logic and your data in a world of rented brains."</p>
-                <cite class="text-sovereign mono font-bold">— Adam Vincent, Founder</cite>
+        <!-- SECTION 1: THE CORE SETUP -->
+        <section id="setup" class="mb-20">
+            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">1. HARDWARE & CORE SETUP</h2>
+            <div class="principle-box">
+                <p class="text-gray-300">"Sovereignty starts with hardware you own. We run on a Mac Mini M2 Pro (16GB RAM) to ensure local memory stability and 24/7 availability."</p>
             </div>
-            <p class="mb-6">The Sovereign Engine architecture was born from the necessity to break the chains of reactive, stateless chatbots. We are moving from LLMs that chat to Agents that <em>do</em>.</p>
-        </section>
+            
+            <div class="space-y-8 mt-10">
+                <div class="flex items-start">
+                    <span class="step-number">01.</span>
+                    <div>
+                        <h4 class="text-white font-bold uppercase mb-2">GIT-BASED INSTALLATION</h4>
+                        <p class="text-sm text-gray-400 mb-4">Forget global npm installs. Clone the source to maintain absolute control over your logic.</p>
+                        <pre><code>mkdir -p ~/openclaw && cd ~/openclaw
+git clone https://github.com/openclaw/openclaw.git .
+pnpm install && pnpm build</code></pre>
+                    </div>
+                </div>
 
-        <!-- SECTION 2: PREREQUISITES -->
-        <section id="phase-2" class="mb-20">
-            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">2. PREREQUISITES & FOUNDATION</h2>
-            <div class="grid md:grid-cols-2 gap-8 mb-10">
-                <div class="p-6 bg-[#0d1117] border border-gray-800 rounded-lg">
-                    <h4 class="text-white mono mb-4 font-bold uppercase text-sm">Minimum Specs</h4>
-                    <ul class="text-sm space-y-2 text-gray-400">
-                        <li>CPU: 4 Core (M-series / Intel / AMD)</li>
-                        <li>RAM: 16GB (Mandatory for local RAG)</li>
-                        <li>OS: Linux / macOS</li>
-                    </ul>
-                </div>
-                <div class="p-6 bg-[#0d1117] border border-accent-purple/30 rounded-lg">
-                    <h4 class="text-sovereign mono mb-4 font-bold uppercase text-sm">Recommended</h4>
-                    <ul class="text-sm space-y-2 text-gray-300">
-                        <li>CPU: 8+ Core Orchestration</li>
-                        <li>RAM: 32GB+ Swarm Ready</li>
-                        <li>1TB NVMe Storage</li>
-                    </ul>
-                </div>
-            </div>
-            <h3 class="text-xl mb-4 uppercase tracking-widest">Ignition sequence</h3>
-            <pre><code>npm install -g openclaw
-pip install chromadb sentence_transformers requests_oauthlib oauthlib requests
+                <div class="flex items-start">
+                    <span class="step-number">02.</span>
+                    <div>
+                        <h4 class="text-white font-bold uppercase mb-2">SOVEREIGN ENGINE INITIALIZATION</h4>
+                        <p class="text-sm text-gray-400 mb-4">Install the gateway as a system service so it survives restarts.</p>
+                        <pre><code>openclaw gateway install --force
 openclaw gateway start</code></pre>
-        </section>
-
-        <!-- SECTION 3: ORCHESTRATION -->
-        <section id="phase-3" class="mb-20">
-            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">3. ORCHESTRATION & ISOLATION</h2>
-            <p class="mb-8 text-gray-400">The Sovereign Engine scales by spawning specialized, ephemeral sub-agents. This keeps the main context window clean and maintains project focus.</p>
-            <div class="p-8 bg-[#0d1117] border border-gray-800 rounded-lg">
-                <h4 class="text-white mb-6 uppercase tracking-tighter">The 20-Step Handoff Protocol</h4>
-                <ol class="space-y-4 text-sm text-gray-300 mono">
-                    <li class="flex gap-4">01. Bottleneck Identification</li>
-                    <li class="flex gap-4">02. Context Pruning</li>
-                    <li class="flex gap-4">03. Persona Mapping</li>
-                    <li class="flex gap-4">04. Tool Authorization</li>
-                    <li class="flex gap-4">05. Isolation Spawning</li>
-                </ol>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SECTION 4: HEARTBEAT -->
-        <section id="phase-4" class="mb-20">
-            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">4. THE HEARTBEAT & THE SHIELD</h2>
-            <h3 class="text-xl mb-6 uppercase tracking-widest">heartbeat.sh</h3>
-            <pre><code>#!/bin/bash
-# Oz System Heartbeat V1.0
-WORKSPACE="/Users/ozagent/.openclaw/workspace"
-DAILY_NOTE="$WORKSPACE/life/daily_notes/$(date +%Y-%m-%d).md"
-# [Logic: Audit PIDs, trigger recovery events]</code></pre>
-            <div class="principle-box mt-8">
-                <h4 class="text-white mb-2 uppercase tracking-widest text-xs">The Shield Mandate</h4>
-                <p class="text-sm text-gray-400 italic">"All browser automation must be headless. No exceptions. No UI. No CAPTCHA overrides. Abort and Notify."</p>
+        <!-- SECTION 2: IDENTITY & CONSTITUTION -->
+        <section id="identity" class="mb-20">
+            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">2. IDENTITY & SOUL.md</h2>
+            <p class="mb-6 text-gray-400">An agent without a constitution is just a random number generator. You must define the SOUL.</p>
+            <div class="p-6 bg-[#0d1117] border border-gray-800 rounded-lg">
+                <h4 class="text-sovereign mono mb-4 font-bold uppercase text-xs">Essential Constitution (SOUL.md)</h4>
+                <ul class="text-sm space-y-3 text-gray-300">
+                    <li class="flex gap-2"><span>[x]</span> <strong>Master Orchestrator:</strong> Central hub for all activities.</li>
+                    <li class="flex gap-2"><span>[x]</span> <strong>Circuit Breaker:</strong> Fail after 3 consecutive errors.</li>
+                    <li class="flex gap-2"><span>[x]</span> <strong>Exponential Backoff:</strong> 10s -> 60s -> 5m progression.</li>
+                    <li class="flex gap-2"><span>[x]</span> <strong>RBAC:</strong> Commands scoped by sender role.</li>
+                </ul>
             </div>
         </section>
 
-        <!-- SECTION 5: RESILIENCE -->
-        <section id="phase-5" class="mb-20">
-            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">5. RESILIENCE & 2:00 AM CONSOLIDATION</h2>
-            <div class="p-6 border border-gray-800 bg-[#0d1117] rounded-lg">
-                <h3 class="text-xl mb-4">API Rate Limit Armor</h3>
-                <p class="text-sm text-gray-400">Hardcoded wait times of 10s, 60s, and 5m (Exponential Backoff) combined with a 3-strike Circuit Breaker ensures the engine never burns tokens on dead loops.</p>
+        <!-- SECTION 3: THE MEMORY STACK -->
+        <section id="memory" class="mb-20">
+            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">3. THE TRIPLE-LAYER MEMORY</h2>
+            <p class="mb-8 text-gray-400">Context is a liability if not managed. We use a 3-layer system to maintain long-term intelligence without token bloat.</p>
+            
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="p-4 bg-[#0d1117] border border-gray-800 rounded">
+                    <h5 class="text-white text-xs font-black uppercase mb-2">1. Daily Logs</h5>
+                    <p class="text-[11px] text-gray-500 italic">Raw event stream. memory/YYYY-MM-DD.md</p>
+                </div>
+                <div class="p-4 bg-[#0d1117] border border-gray-800 rounded">
+                    <h5 class="text-white text-xs font-black uppercase mb-2">2. Long-Term</h5>
+                    <p class="text-[11px] text-gray-500 italic">Distilled achievements. MEMORY.md</p>
+                </div>
+                <div class="p-4 bg-[#0d1117] border border-gray-800 rounded">
+                    <h5 class="text-white text-xs font-black uppercase mb-2">3. Tacit Knowledge</h5>
+                    <p class="text-[11px] text-gray-500 italic">Deep patterns. /memory/tacit/</p>
+                </div>
             </div>
-            <div class="text-center py-20 mt-20 border-t border-gray-800">
-                <h2 class="text-sovereign text-4xl mb-4 italic mono tracking-tighter">V 3.0 HARD DEPLOY VERIFIED</h2>
-                <p class="text-sm text-gray-500 uppercase tracking-widest font-black">Stay Sovereign. LFG.</p>
+            
+            <div class="principle-box mt-6">
+                <h4 class="text-white text-xs uppercase mb-2">THE 1:00 AM CONSOLIDATION</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">Every night at 1:00 AM, the agent reviews the daily logs, identifies key decisions, and updates MEMORY.md. This prevents the "memory leak" common in stateless bots.</p>
             </div>
         </section>
+
+        <!-- SECTION 4: MISSION CONTROL -->
+        <section id="mission-control" class="mb-20">
+            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">4. MISSION CONTROL V3.5</h2>
+            <p class="mb-6 text-gray-400">A sovereign agent needs a cockpit. We built Mission Control using Next.js and SQLite for a persistent, private task management layer.</p>
+            
+            <div class="p-8 bg-[#0d1117] border border-accent-purple/20 rounded-lg">
+                <h4 class="text-white mb-6 uppercase tracking-tighter">Cockpit Features</h4>
+                <ul class="space-y-4 text-sm text-gray-300 mono">
+                    <li class="flex gap-4"><span>[x]</span> LIVE DATA WIRING: Direct hooks into openclaw.json</li>
+                    <li class="flex gap-4"><span>[x]</span> KANBAN BOARD: Agent polls board on every heartbeat</li>
+                    <li class="flex gap-4"><span>[x]</span> ZERO TELEMETRY: Mocked release checks, no phone-home</li>
+                    <li class="flex gap-4"><span>[x]</span> PERSISTENT LOGS: SQLite-backed history tracking</li>
+                </ul>
+            </div>
+            <pre class="mt-6"><code># Deployment Sequence
+cd ~/mission-control-new
+pnpm install
+pnpm run build
+pnpm run start --port 3001</code></pre>
+        </section>
+
+        <!-- SECTION 5: AUTOMATION & HEARTBEATS -->
+        <section id="automation" class="mb-20">
+            <h2 class="text-3xl mb-8 border-b border-gray-800 pb-2">5. PROACTIVE AGENCY (CRONTAB)</h2>
+            <p class="mb-6 text-gray-400">Oz doesn't wait for permission. It operates on a precise cron schedule to ensure growth and safety.</p>
+            
+            <table class="w-full text-left text-sm border-collapse">
+                <thead>
+                    <tr class="border-b border-gray-800 text-gray-500 uppercase text-[10px] tracking-widest">
+                        <th class="py-4">TIME (PST)</th>
+                        <th class="py-4">EVENT</th>
+                        <th class="py-4">OBJECTIVE</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-300 font-mono text-xs">
+                    <tr class="border-b border-white/5">
+                        <td class="py-4">01:00 AM</td>
+                        <td class="py-4">Memory Consolidation</td>
+                        <td class="py-4">Distill daily insights</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4">02:00 AM</td>
+                        <td class="py-4">Vault Sync</td>
+                        <td class="py-4">GitHub Push (Private)</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4">03:00 AM</td>
+                        <td class="py-4">Security Council</td>
+                        <td class="py-4">4-Point Vulnerability Scan</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-4">10:00 AM</td>
+                        <td class="py-4">X Proactive Pitch</td>
+                        <td class="py-4">Revenue Generation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FINAL CTA -->
+        <footer class="text-center py-20 border-t border-gray-800">
+            <h2 class="text-sovereign text-4xl mb-4 italic mono tracking-tighter">ENGINE READY.</h2>
+            <p class="text-sm text-gray-500 uppercase tracking-widest font-black">Stay Sovereign. Build Private. Generate Revenue.</p>
+        </footer>
     </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>OZ MISSION CONTROL PLAYBOOK V 4.3</title>
+    <title>OZ MISSION CONTROL PLAYBOOK V 4.4</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -60,19 +60,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .phase-card::after {
-            content: 'CLICK TO EXPAND DETAILS';
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 8px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #444;
-            transition: color 0.3s;
-        }
-        .phase-card:hover::after { color: var(--accent-cyan); }
-
         .phase-content {
             max-height: 0;
             overflow: hidden;
@@ -81,23 +68,55 @@
         }
 
         .phase-card.active .phase-content {
-            max-height: 2000px;
+            max-height: 5000px;
             opacity: 1;
             margin-top: 2rem;
         }
 
-        .check-item {
+        /* Interactive Checkbox Styles */
+        .check-group {
             display: flex;
             align-items: flex-start;
             gap: 12px;
             margin-bottom: 0.75rem;
             font-size: 0.95rem;
-            transition: transform 0.2s;
+            cursor: pointer;
+            user-select: none;
         }
-        .check-item:hover { transform: translateX(4px); }
-        
-        .check-icon { color: #00FF41; font-weight: bold; min-width: 20px; }
-        .pending-icon { color: #444; font-weight: bold; min-width: 20px; }
+
+        .check-group input {
+            display: none;
+        }
+
+        .custom-check {
+            min-width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-top: 2px;
+        }
+
+        .check-group input:checked + .custom-check {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .check-group input:checked + .custom-check::after {
+            content: '✓';
+            color: black;
+            font-weight: 900;
+            font-size: 14px;
+        }
+
+        .check-group input:checked ~ span {
+            color: #8b949e;
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
 
         pre {
             background-color: #0d1117;
@@ -150,18 +169,6 @@
             100% { top: 110%; }
         }
 
-        .step-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            opacity: 0.1;
-            position: absolute;
-            right: 2rem;
-            bottom: 1rem;
-            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .sub-list {
             margin-left: 2rem;
             font-size: 0.85rem;
@@ -171,6 +178,18 @@
             margin-top: 0.5rem;
             margin-bottom: 1rem;
         }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        .tag-done { background: rgba(0, 255, 65, 0.1); color: #00FF41; border: 1px solid rgba(0, 255, 65, 0.2); }
+        .tag-new { background: rgba(34, 211, 238, 0.1); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.2); }
     </style>
 </head>
 <body class="selection:bg-cyan-500/30">
@@ -179,13 +198,13 @@
     <div class="content-container">
         <header class="text-center mb-20">
             <h1 class="text-6xl md:text-8xl mb-6 tracking-tighter">OZ MISSION <br/> CONTROL</h1>
-            <div class="mono text-sovereign text-xl tracking-widest uppercase opacity-80">THE INTERACTIVE MASTERPLAN V 4.3</div>
+            <div class="mono text-sovereign text-xl tracking-widest uppercase opacity-80">INTERACTIVE PLAYBOOK V 4.4</div>
         </header>
 
         <div class="masterplan-box">
             <div class="flex justify-between items-end mb-4">
                 <h3 class="text-xl">🗺️ SYSTEM AUTONOMY</h3>
-                <span class="mono text-sovereign text-2xl">85%</span>
+                <span class="mono text-sovereign text-2xl">88%</span>
             </div>
             <div class="progress-container">
                 <div id="main-progress" class="progress-fill"></div>
@@ -197,134 +216,121 @@
         </div>
 
         <!-- PHASE 1 -->
-        <div class="phase-card active" onclick="togglePhase(this)">
+        <div class="phase-card active" onclick="togglePhase(event, this)">
             <h2 class="text-4xl mb-4 tracking-tighter">PHASE 1: FOUNDATION</h2>
             <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Hardened Infrastructure & Constitution</p>
-            <div class="step-number">01</div>
             
             <div class="phase-content">
                 <div class="grid md:grid-cols-2 gap-x-8 mb-8">
                     <div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Hardware/Node Setup (OpenClaw on Mac)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Git-Based Architecture (Self-healing)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Bleeding Edge Versioning (v2026.3.7-beta.1)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Identity & Soul (Constitution established)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Sovereign Domain (DNS verified)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>3-Layer Memory Stack (PARA + Daily Notes + Tacit Knowledge)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Tacit Knowledge (Circuit Breakers, Boot Sync live)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Automated Maintenance (Crontab clean)</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Hardware: Mac Mini M2 Pro Setup</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Git-Based Architecture (Self-healing)</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>v2026.3.8 Upgrade (Security Patches)<span class="tag tag-new">Updated</span></span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Identity: SOUL.md established</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>DNS verified (adambuilds.io)</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>3-Layer Memory (PARA + Daily + Tacit)</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Circuit Breakers (Exponential Backoff)<span class="tag tag-done">Verified</span></span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Crontab Maintenance (Cleaned)</span></label>
                     </div>
                     <div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Security Audit (Live at 3:00 AM)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Async Worker Upgrade (Blocking bottleneck solved)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Authenticated Layer (Telegram = only execution channel)</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Security Audit (3:00 AM Cron)</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Async Worker (Queue Bottleneck Solved)</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Telegram Command Layer</span></label>
                         
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>GitHub Backup FIXED</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>GitHub Backup FIXED</span></label>
                         <div class="sub-list">
-                            — OzAgent-Cron token upgraded to Read+Write <br/>
-                            — All repositories scope confirmed <br/>
-                            — 17 queued commits pushed <br/>
-                            — auto_sync.sh verified clean
+                            — Token upgraded to R/W <br/>
+                            — auto_sync.sh verified clean <br/>
+                            — 17 commits pushed to vault
                         </div>
 
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Cron Staggering FIXED</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Cron Staggering FIXED</span></label>
                         <div class="sub-list">
-                            — Memory Consolidation moved to 1:00 AM <br/>
-                            — No more 3am API rate limit pileup <br/>
-                            — 1am consolidation → 2am sync → 3am security
+                            — 1am Consolidation <br/>
+                            — 2am Vault Sync <br/>
+                            — 3am Security Council
                         </div>
 
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>HEARTBEAT.md Rewritten</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>HEARTBEAT.md Protocol</span></label>
                         <div class="sub-list">
                             — Routing rules hardcoded <br/>
-                            — Updates silenced to 1-on-1 DM only <br/>
-                            — Group chat flooding stopped
+                            — Silence enabled for groups
                         </div>
 
-                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Multi-User/Profile Architecture (RBAC)</span></div>
-                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">web_search end-to-end test (Brave key)</span></div>
+                        <label class="check-group"><input type="checkbox"><div class="custom-check"></div><span class="text-gray-500 italic">Multi-User RBAC (In Progress)</span></label>
                     </div>
                 </div>
                 
                 <h4 class="text-xs mb-4">Core Implementation</h4>
-                <pre><code># The Sovereign Setup
-git clone https://github.com/openclaw/openclaw.git .
-pnpm install && pnpm build
-openclaw gateway install --force</code></pre>
+                <pre><code># Sovereignty Check
+openclaw status
+openclaw gateway status
+openclaw logs --follow</code></pre>
             </div>
         </div>
 
         <!-- PHASE 2 -->
-        <div class="phase-card" onclick="togglePhase(this)">
+        <div class="phase-card" onclick="togglePhase(event, this)">
             <h2 class="text-4xl mb-4 tracking-tighter">PHASE 2: REVENUE</h2>
             <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Autonomous Wallet & Fulfillment</p>
-            <div class="step-number">02</div>
             
             <div class="phase-content">
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Payment Gateway (Stripe KYC complete)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Statement Descriptor (OZ AI PLAYBOOK)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>V3.0 Masterclass Product Ready</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Stripe KYC Complete</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Statement: OZ AI PLAYBOOK</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>V3.0 Product Ready</span></label>
                     </div>
                     <div class="space-y-2">
-                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Digital Fulfillment Logic</span></div>
-                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Crypto Wallet Integration (ETH/SOL)</span></div>
+                        <label class="check-group"><input type="checkbox"><div class="custom-check"></div><span class="text-gray-500 italic">Digital Fulfillment</span></label>
+                        <label class="check-group"><input type="checkbox"><div class="custom-check"></div><span class="text-gray-500 italic">Crypto Wallet (ETH/SOL)</span></label>
                     </div>
-                </div>
-                <div class="p-4 bg-purple-500/5 border border-purple-500/20 rounded text-xs text-gray-400 italic">
-                    Focus: Replicating the "Nat/Felix Model" – $80k autonomous wallet target via agent-controlled payments.
                 </div>
             </div>
         </div>
 
         <!-- PHASE 3 -->
-        <div class="phase-card" onclick="togglePhase(this)">
+        <div class="phase-card" onclick="togglePhase(event, this)">
             <h2 class="text-4xl mb-4 tracking-tighter">PHASE 3: GROWTH</h2>
             <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">X Integration & Scout Swarms</p>
-            <div class="step-number">03</div>
             
             <div class="phase-content">
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>X Integration (OAuth 1.0a Verified)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>X-Proactive-Pitch Cron (10am/2pm/6pm)</span></div>
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Brave Search (Scout unblocked)</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>X OAuth 1.0a Verified</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>X-Proactive-Pitch Cron</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Brave Search Swarms</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>post_to_x_env.py migrated<span class="tag tag-new">New</span></span></label>
                     </div>
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">[x]</span> <span>Telegram Routing Hub</span></div>
-                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">"The Hook" Sequence</span></div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Telegram Routing Hub</span></label>
+                        <label class="check-group"><input type="checkbox"><div class="custom-check"></div><span class="text-gray-500 italic">"The Hook" Sequence</span></label>
                     </div>
-                </div>
-                <h4 class="text-xs mb-4">Approval Protocol</h4>
-                <div class="p-4 bg-black border border-gray-800 rounded text-xs mono">
-                    <span class="text-cyan-400">Agent:</span> Draft: "Autonomous agents are the new SaaS..." <br/>
-                    <span class="text-green-500">Human:</span> SEND IT
                 </div>
             </div>
         </div>
 
         <!-- PHASE 4 -->
-        <div class="phase-card" onclick="togglePhase(this)">
+        <div class="phase-card" onclick="togglePhase(event, this)">
             <h2 class="text-4xl mb-4 tracking-tighter">PHASE 4: AUTONOMY</h2>
             <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Mission Control & Agent Council</p>
-            <div class="step-number">04</div>
             
             <div class="phase-content">
                 <div class="p-6 border border-cyan-500/20 bg-cyan-500/5 rounded-lg mb-8">
-                    <h3 class="text-lg mb-4">MISSION CONTROL DASHBOARD LIVE</h3>
+                    <h3 class="text-lg mb-4">MISSION CONTROL DASHBOARD</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ LIVE TASK BOARD</div>
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ PARA MEMORY</div>
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ AGENT TEAM VIEW</div>
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ DOCS INDEXING</div>
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ PIXEL OFFICE</div>
-                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ CRON CALENDAR</div>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">TASK BOARD</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">PARA MEMORY</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">TEAM VIEW</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">DOCS INDEX</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">PIXEL OFFICE</span></label>
+                        <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span class="text-[10px] font-black uppercase text-cyan-400">CRON CALENDAR</span></label>
                     </div>
+                    <div class="mt-4 text-[10px] text-gray-500 mono">✓ Mocked Releases (Privacy) | ✓ SQL Persistence | ✓ Port 3001 Verification</div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="check-item"><span class="check-icon">[x]</span> <span>Vault Auto-Sync (Hourly)</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Business Advisory Council (8 Agents)</span></div>
+                    <label class="check-group"><input type="checkbox" checked><div class="custom-check"></div><span>Vault Auto-Sync (Hourly)</span></label>
+                    <label class="check-group"><input type="checkbox"><div class="custom-check"></div><span class="text-gray-500 italic">Business Council (8 Agents)</span></label>
                 </div>
             </div>
         </div>
@@ -335,23 +341,21 @@ openclaw gateway install --force</code></pre>
     </div>
 
     <script>
-        // Animate progress bar on load
         window.onload = () => {
             setTimeout(() => {
-                document.getElementById('main-progress').style.width = '85%';
+                document.getElementById('main-progress').style.width = '88%';
             }, 500);
         };
 
-        // Toggle phase expansion
-        function togglePhase(card) {
-            // Close others
+        function togglePhase(event, card) {
+            // Prevent toggling if user clicks a checkbox
+            if (event.target.closest('.check-group')) return;
+            
             document.querySelectorAll('.phase-card').forEach(p => {
                 if (p !== card) p.classList.remove('active');
             });
-            // Toggle current
             card.classList.toggle('active');
             
-            // Scroll into view if opening
             if (card.classList.contains('active')) {
                 setTimeout(() => {
                     card.scrollIntoView({ behavior: 'smooth', block: 'center' });

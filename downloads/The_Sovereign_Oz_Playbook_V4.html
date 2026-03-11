@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>OZ MISSION CONTROL PLAYBOOK V 4.2</title>
+    <title>OZ MISSION CONTROL PLAYBOOK V 4.3</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -88,7 +88,7 @@
 
         .check-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             margin-bottom: 0.75rem;
             font-size: 0.95rem;
@@ -96,8 +96,8 @@
         }
         .check-item:hover { transform: translateX(4px); }
         
-        .check-icon { color: #00FF41; font-weight: bold; }
-        .pending-icon { color: #444; font-weight: bold; }
+        .check-icon { color: #00FF41; font-weight: bold; min-width: 20px; }
+        .pending-icon { color: #444; font-weight: bold; min-width: 20px; }
 
         pre {
             background-color: #0d1117;
@@ -161,6 +161,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .sub-list {
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            color: #8b949e;
+            border-left: 1px solid #30363D;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body class="selection:bg-cyan-500/30">
@@ -169,7 +179,7 @@
     <div class="content-container">
         <header class="text-center mb-20">
             <h1 class="text-6xl md:text-8xl mb-6 tracking-tighter">OZ MISSION <br/> CONTROL</h1>
-            <div class="mono text-sovereign text-xl tracking-widest uppercase opacity-80">THE INTERACTIVE MASTERPLAN V 4.2</div>
+            <div class="mono text-sovereign text-xl tracking-widest uppercase opacity-80">THE INTERACTIVE MASTERPLAN V 4.3</div>
         </header>
 
         <div class="masterplan-box">
@@ -187,22 +197,52 @@
         </div>
 
         <!-- PHASE 1 -->
-        <div class="phase-card" onclick="togglePhase(this)">
+        <div class="phase-card active" onclick="togglePhase(this)">
             <h2 class="text-4xl mb-4 tracking-tighter">PHASE 1: FOUNDATION</h2>
             <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Hardened Infrastructure & Constitution</p>
             <div class="step-number">01</div>
             
             <div class="phase-content">
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">✓</span> Hardware: Mac Mini M2 Pro</div>
-                        <div class="check-item"><span class="check-icon">✓</span> Git-Based Self-healing Core</div>
-                        <div class="check-item"><span class="check-icon">✓</span> Identity: SOUL.md established</div>
+                <div class="grid md:grid-cols-2 gap-x-8 mb-8">
+                    <div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Hardware/Node Setup (OpenClaw on Mac)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Git-Based Architecture (Self-healing)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Bleeding Edge Versioning (v2026.3.7-beta.1)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Identity & Soul (Constitution established)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Sovereign Domain (DNS verified)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>3-Layer Memory Stack (PARA + Daily Notes + Tacit Knowledge)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Tacit Knowledge (Circuit Breakers, Boot Sync live)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Automated Maintenance (Crontab clean)</span></div>
                     </div>
-                    <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">✓</span> 3-Layer Memory Stack</div>
-                        <div class="check-item"><span class="check-icon">✓</span> Automated Security Audits</div>
-                        <div class="check-item"><span class="pending-icon">_</span> Multi-User RBAC</div>
+                    <div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Security Audit (Live at 3:00 AM)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Async Worker Upgrade (Blocking bottleneck solved)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Authenticated Layer (Telegram = only execution channel)</span></div>
+                        
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>GitHub Backup FIXED</span></div>
+                        <div class="sub-list">
+                            — OzAgent-Cron token upgraded to Read+Write <br/>
+                            — All repositories scope confirmed <br/>
+                            — 17 queued commits pushed <br/>
+                            — auto_sync.sh verified clean
+                        </div>
+
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Cron Staggering FIXED</span></div>
+                        <div class="sub-list">
+                            — Memory Consolidation moved to 1:00 AM <br/>
+                            — No more 3am API rate limit pileup <br/>
+                            — 1am consolidation → 2am sync → 3am security
+                        </div>
+
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>HEARTBEAT.md Rewritten</span></div>
+                        <div class="sub-list">
+                            — Routing rules hardcoded <br/>
+                            — Updates silenced to 1-on-1 DM only <br/>
+                            — Group chat flooding stopped
+                        </div>
+
+                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Multi-User/Profile Architecture (RBAC)</span></div>
+                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">web_search end-to-end test (Brave key)</span></div>
                     </div>
                 </div>
                 
@@ -223,16 +263,17 @@ openclaw gateway install --force</code></pre>
             <div class="phase-content">
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">✓</span> Payment Gateway (Stripe KYC)</div>
-                        <div class="check-item"><span class="check-icon">✓</span> OZ AI Playbook Product</div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Payment Gateway (Stripe KYC complete)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Statement Descriptor (OZ AI PLAYBOOK)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>V3.0 Masterclass Product Ready</span></div>
                     </div>
                     <div class="space-y-2">
-                        <div class="check-item"><span class="pending-icon">_</span> Digital Fulfillment Logic</div>
-                        <div class="check-item"><span class="pending-icon">_</span> Crypto Wallet (ETH/SOL)</div>
+                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Digital Fulfillment Logic</span></div>
+                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Crypto Wallet Integration (ETH/SOL)</span></div>
                     </div>
                 </div>
                 <div class="p-4 bg-purple-500/5 border border-purple-500/20 rounded text-xs text-gray-400 italic">
-                    Focus: Replicating the "Nat/Felix Model" – $80k autonomous wallet target via agent-driven sales.
+                    Focus: Replicating the "Nat/Felix Model" – $80k autonomous wallet target via agent-controlled payments.
                 </div>
             </div>
         </div>
@@ -246,13 +287,13 @@ openclaw gateway install --force</code></pre>
             <div class="phase-content">
                 <div class="grid md:grid-cols-2 gap-8 mb-8">
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">✓</span> X OAuth 1.0a Integration</div>
-                        <div class="check-item"><span class="check-icon">✓</span> Proactive Pitch Crons</div>
-                        <div class="check-item"><span class="check-icon">✓</span> Brave Search Swarms</div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>X Integration (OAuth 1.0a Verified)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>X-Proactive-Pitch Cron (10am/2pm/6pm)</span></div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Brave Search (Scout unblocked)</span></div>
                     </div>
                     <div class="space-y-2">
-                        <div class="check-item"><span class="check-icon">✓</span> Telegram Routing Hub</div>
-                        <div class="check-item"><span class="pending-icon">_</span> "The Hook" Sequence</div>
+                        <div class="check-item"><span class="check-icon">[x]</span> <span>Telegram Routing Hub</span></div>
+                        <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">"The Hook" Sequence</span></div>
                     </div>
                 </div>
                 <h4 class="text-xs mb-4">Approval Protocol</h4>
@@ -271,7 +312,7 @@ openclaw gateway install --force</code></pre>
             
             <div class="phase-content">
                 <div class="p-6 border border-cyan-500/20 bg-cyan-500/5 rounded-lg mb-8">
-                    <h3 class="text-lg mb-4">MISSION CONTROL COCKPIT LIVE</h3>
+                    <h3 class="text-lg mb-4">MISSION CONTROL DASHBOARD LIVE</h3>
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="text-[10px] font-black uppercase text-cyan-400">✓ LIVE TASK BOARD</div>
                         <div class="text-[10px] font-black uppercase text-cyan-400">✓ PARA MEMORY</div>
@@ -282,8 +323,8 @@ openclaw gateway install --force</code></pre>
                     </div>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="check-item"><span class="check-icon">✓</span> Vault Auto-Sync (Hourly)</div>
-                    <div class="check-item"><span class="pending-icon">_</span> Business Council (8 Expert Swarm)</div>
+                    <div class="check-item"><span class="check-icon">[x]</span> <span>Vault Auto-Sync (Hourly)</span></div>
+                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Business Advisory Council (8 Agents)</span></div>
                 </div>
             </div>
         </div>
@@ -317,11 +358,6 @@ openclaw gateway install --force</code></pre>
                 }, 300);
             }
         }
-        
-        // Open first phase by default
-        setTimeout(() => {
-            document.querySelector('.phase-card').classList.add('active');
-        }, 1500);
     </script>
 </body>
 </html>

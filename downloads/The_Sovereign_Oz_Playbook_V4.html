@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>OZ MISSION CONTROL PLAYBOOK V 4.0</title>
+    <title>OZ MISSION CONTROL PLAYBOOK V 4.1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -88,13 +88,28 @@
             background: rgba(34, 211, 238, 0.05);
             margin-bottom: 3rem;
         }
+        .step-number {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.25rem;
+            font-weight: 900;
+            margin-right: 0.75rem;
+        }
+        .principle-box {
+            border-left: 4px solid var(--accent-purple);
+            background: rgba(168, 85, 247, 0.05);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
     <div class="content-container">
         <header class="text-center mb-16">
             <h1 class="text-5xl md:text-6xl mb-4">OZ MISSION CONTROL</h1>
-            <div class="mono text-sovereign text-xl tracking-widest uppercase">THE MASTERPLAN PLAYBOOK V 4.0</div>
+            <div class="mono text-sovereign text-xl tracking-widest uppercase">THE MASTERPLAN PLAYBOOK V 4.1</div>
             <div class="mt-8 p-4 border border-red-500/30 bg-red-500/5 text-xs text-red-400 uppercase tracking-widest leading-relaxed">
                 LEGAL DISCLAIMER: Educational purposes only. This is the exact blueprint of the OZ Sovereign Engine.
             </div>
@@ -112,14 +127,13 @@
         <!-- PHASE 1 -->
         <div class="phase-card">
             <h2 class="text-3xl mb-6">PHASE 1: SOVEREIGN FOUNDATION</h2>
-            <div class="grid md:grid-cols-2 gap-x-8">
+            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
                 <div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Hardware/Node Setup (Mac Mini M2 Pro)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Git-Based Architecture (Self-healing)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Bleeding Edge Versioning (v2026.3.7-beta.1)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Identity & Soul (SOUL.md Established)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>3-Layer Memory (PARA + Daily + Tacit)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Security Audit (Live 3:00 AM Cron)</span></div>
                 </div>
                 <div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>GitHub Backup (Fixed R/W Scopes)</span></div>
@@ -129,18 +143,41 @@
                     <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Brave Search Cron Validation</span></div>
                 </div>
             </div>
-            <h4 class="text-sm mt-8 mb-4 text-sovereign">Step 1: The Sovereign Clone</h4>
-            <pre><code># Deploying the core engine
-mkdir -p ~/openclaw && cd ~/openclaw
+
+            <div class="space-y-6">
+                <div class="flex items-start">
+                    <span class="step-number">01.</span>
+                    <div class="flex-1">
+                        <h4 class="text-white font-bold uppercase text-xs mb-2">The Sovereign Clone</h4>
+                        <p class="text-[11px] text-gray-400 mb-2">Forget global npm installs. Clone the source to maintain absolute control over your logic.</p>
+                        <pre><code>mkdir -p ~/openclaw && cd ~/openclaw
 git clone https://github.com/openclaw/openclaw.git .
 pnpm install && pnpm build
 openclaw gateway install --force</code></pre>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <span class="step-number">02.</span>
+                    <div class="flex-1">
+                        <h4 class="text-white font-bold uppercase text-xs mb-2">Identity & Soul (SOUL.md)</h4>
+                        <div class="principle-box">
+                            <p class="italic text-gray-300">"An agent without a constitution is just a random number generator. You must define the SOUL."</p>
+                            <ul class="text-[10px] mt-2 space-y-1 text-gray-400 mono">
+                                <li>- Master Orchestrator: Central hub for all activities.</li>
+                                <li>- Circuit Breaker: Fail after 3 consecutive errors.</li>
+                                <li>- Exponential Backoff: 10s -> 60s -> 5m progression.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- PHASE 2 -->
         <div class="phase-card">
             <h2 class="text-3xl mb-6">PHASE 2: REVENUE ENGINE</h2>
-            <div class="grid md:grid-cols-2 gap-x-8">
+            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
                 <div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Payment Gateway (Stripe KYC Complete)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>Statement Descriptor (OZ AI PLAYBOOK)</span></div>
@@ -151,15 +188,20 @@ openclaw gateway install --force</code></pre>
                     <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Crypto Wallet Integration (ETH/SOL)</span></div>
                 </div>
             </div>
-            <div class="mt-6 p-4 bg-purple-500/5 border border-purple-500/20 rounded">
-                <p class="text-xs text-gray-400 italic leading-relaxed">The revenue engine is built on the "Nat/Felix Model" – aim for $80k autonomous wallet balance via agent-driven sales.</p>
+            
+            <div class="flex items-start">
+                <span class="step-number">03.</span>
+                <div class="flex-1">
+                    <h4 class="text-white font-bold uppercase text-xs mb-2">The Revenue Model</h4>
+                    <p class="text-[11px] text-gray-400">Inspired by the "Nat/Felix Model" – the agent manages digital fulfillment and aims for an autonomous $80k wallet balance.</p>
+                </div>
             </div>
         </div>
 
         <!-- PHASE 3 -->
         <div class="phase-card">
             <h2 class="text-3xl mb-6">PHASE 3: GROWTH ENGINE</h2>
-            <div class="grid md:grid-cols-2 gap-x-8">
+            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
                 <div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>X Integration (OAuth 1.0a Verified)</span></div>
                     <div class="check-item"><span class="check-icon">[✓]</span> <span>X Posting Live (ID: 20304692...)</span></div>
@@ -171,18 +213,24 @@ openclaw gateway install --force</code></pre>
                     <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">The Hook Sequence Thread</span></div>
                 </div>
             </div>
-            <h4 class="text-sm mt-8 mb-4 text-sovereign">Step 3: The Pitch Approval Flow</h4>
-            <p class="text-xs text-gray-400 mb-4">The agent drafts pitches in the Oz X Social group. No post goes live without human approval.</p>
-            <div class="p-4 bg-black border border-gray-800 rounded text-xs mono">
-                <span class="text-cyan-400">Agent:</span> Draft: "Autonomous agents are the new SaaS..." <br/>
-                <span class="text-green-500">Human:</span> SEND IT
+
+            <div class="flex items-start">
+                <span class="step-number">04.</span>
+                <div class="flex-1">
+                    <h4 class="text-white font-bold uppercase text-xs mb-2">The Pitch Approval Flow</h4>
+                    <p class="text-[11px] text-gray-400 mb-4">The agent drafts pitches in the Oz X Social group. No post goes live without human approval via the "SEND IT" protocol.</p>
+                    <div class="p-4 bg-black border border-gray-800 rounded text-xs mono">
+                        <span class="text-cyan-400">Agent:</span> Draft: "Autonomous agents are the new SaaS..." <br/>
+                        <span class="text-green-500">Human:</span> SEND IT
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- PHASE 4 -->
         <div class="phase-card">
             <h2 class="text-3xl mb-6">PHASE 4: SCALING TO AUTONOMY</h2>
-            <div class="mb-6">
+            <div class="mb-8">
                 <div class="check-item"><span class="check-icon">[✓]</span> <span><b>MISSION CONTROL DASHBOARD LIVE (localhost:3000)</b></span></div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-4 ml-8">
                     <div class="text-[10px] text-gray-500 uppercase font-black">✓ Task Board</div>
@@ -193,14 +241,32 @@ openclaw gateway install --force</code></pre>
                     <div class="text-[10px] text-gray-500 uppercase font-black">✓ Pixel Office</div>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-x-8">
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Vault Auto-Sync (Hourly Push)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>System Heartbeat (Silenced DM)</span></div>
-                </div>
-                <div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Business Advisory Council (8 Agents)</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Web UI Transition (Hosted Cloud)</span></div>
+
+            <div class="flex items-start">
+                <span class="step-number">05.</span>
+                <div class="flex-1">
+                    <h4 class="text-white font-bold uppercase text-xs mb-2">Proactive Agency (Crontab)</h4>
+                    <table class="w-full text-left text-[10px] border-collapse mt-4">
+                        <thead>
+                            <tr class="border-b border-gray-800 text-gray-500 uppercase tracking-widest">
+                                <th class="py-2">TIME (PST)</th>
+                                <th class="py-2">EVENT</th>
+                                <th class="py-2">OBJECTIVE</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300 font-mono">
+                            <tr class="border-b border-white/5">
+                                <td class="py-2">01:00 AM</td>
+                                <td class="py-2">Memory Consolidation</td>
+                                <td class="py-2">Distill daily insights</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="py-2">03:00 AM</td>
+                                <td class="py-2">Security Council</td>
+                                <td class="py-2">4-Point Vulnerability Scan</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

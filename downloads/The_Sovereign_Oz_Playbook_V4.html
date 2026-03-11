@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>OZ MISSION CONTROL PLAYBOOK V 4.1</title>
+    <title>OZ MISSION CONTROL PLAYBOOK V 4.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -20,16 +20,19 @@
             color: var(--text-color);
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
+            overflow-x: hidden;
         }
         .text-sovereign { color: var(--accent-cyan); }
         .border-sovereign { border-color: var(--accent-purple); }
         .bg-sovereign { background-color: var(--accent-purple); }
         .mono { font-family: 'Fira Code', monospace; }
+        
         .content-container {
             max-width: 900px;
             margin: 0 auto;
             padding: 2rem;
         }
+        
         h1, h2, h3, h4 {
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
             -webkit-background-clip: text;
@@ -38,243 +41,287 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
         .phase-card {
             border: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.02);
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.01);
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            border-radius: 16px;
             position: relative;
-            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
-        .phase-card::before {
-            content: '';
+        
+        .phase-card:hover {
+            border-color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.03);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .phase-card::after {
+            content: 'CLICK TO EXPAND DETAILS';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan));
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 8px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #444;
+            transition: color 0.3s;
         }
+        .phase-card:hover::after { color: var(--accent-cyan); }
+
+        .phase-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-out, opacity 0.4s;
+            opacity: 0;
+        }
+
+        .phase-card.active .phase-content {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+
         .check-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 12px;
             margin-bottom: 0.75rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            transition: transform 0.2s;
         }
-        .check-icon {
-            color: #00FF41;
-            font-weight: bold;
-            min-width: 20px;
-        }
-        .pending-icon {
-            color: #555;
-            font-weight: bold;
-            min-width: 20px;
-        }
+        .check-item:hover { transform: translateX(4px); }
+        
+        .check-icon { color: #00FF41; font-weight: bold; }
+        .pending-icon { color: #444; font-weight: bold; }
+
         pre {
             background-color: #0d1117;
             border: 1px solid var(--border-color);
-            padding: 1.25rem;
+            padding: 1.5rem;
             border-radius: 8px;
             overflow-x: auto;
-            font-size: 0.8rem;
-            margin: 1rem 0;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
+
         .masterplan-box {
-            border: 1px dashed var(--accent-cyan);
-            padding: 1.5rem;
-            background: rgba(34, 211, 238, 0.05);
-            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 4rem;
+            border-radius: 12px;
+            backdrop-blur: 10px;
         }
-        .step-number {
+
+        .progress-container {
+            height: 4px;
+            background: #111;
+            border-radius: 2px;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            box-shadow: 0 0 15px var(--accent-cyan);
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(34, 211, 238, 0.05);
+            z-index: 100;
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            opacity: 0.1;
+            position: absolute;
+            right: 2rem;
+            bottom: 1rem;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.25rem;
-            font-weight: 900;
-            margin-right: 0.75rem;
-        }
-        .principle-box {
-            border-left: 4px solid var(--accent-purple);
-            background: rgba(168, 85, 247, 0.05);
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.85rem;
         }
     </style>
 </head>
-<body>
+<body class="selection:bg-cyan-500/30">
+    <div class="scanline"></div>
+    
     <div class="content-container">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-6xl mb-4">OZ MISSION CONTROL</h1>
-            <div class="mono text-sovereign text-xl tracking-widest uppercase">THE MASTERPLAN PLAYBOOK V 4.1</div>
-            <div class="mt-8 p-4 border border-red-500/30 bg-red-500/5 text-xs text-red-400 uppercase tracking-widest leading-relaxed">
-                LEGAL DISCLAIMER: Educational purposes only. This is the exact blueprint of the OZ Sovereign Engine.
-            </div>
+        <header class="text-center mb-20">
+            <h1 class="text-6xl md:text-8xl mb-6 tracking-tighter">OZ MISSION <br/> CONTROL</h1>
+            <div class="mono text-sovereign text-xl tracking-widest uppercase opacity-80">THE INTERACTIVE MASTERPLAN V 4.2</div>
         </header>
 
         <div class="masterplan-box">
-            <h3 class="text-lg mb-4">🗺️ MASTERPLAN STATUS: ACTIVE</h3>
-            <p class="text-sm text-gray-400 mb-2">Updated: March 10, 2026</p>
-            <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-gradient-to-r from-purple-500 to-cyan-400 h-full w-[85%]"></div>
+            <div class="flex justify-between items-end mb-4">
+                <h3 class="text-xl">🗺️ SYSTEM AUTONOMY</h3>
+                <span class="mono text-sovereign text-2xl">85%</span>
             </div>
-            <p class="text-[10px] mt-2 uppercase tracking-widest text-right">85% Autonomy Reached</p>
+            <div class="progress-container">
+                <div id="main-progress" class="progress-fill"></div>
+            </div>
+            <div class="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 font-black">
+                <span>Initialization</span>
+                <span>Full Sovereignty</span>
+            </div>
         </div>
 
         <!-- PHASE 1 -->
-        <div class="phase-card">
-            <h2 class="text-3xl mb-6">PHASE 1: SOVEREIGN FOUNDATION</h2>
-            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Hardware/Node Setup (Mac Mini M2 Pro)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Git-Based Architecture (Self-healing)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Bleeding Edge Versioning (v2026.3.7-beta.1)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Identity & Soul (SOUL.md Established)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>3-Layer Memory (PARA + Daily + Tacit)</span></div>
+        <div class="phase-card" onclick="togglePhase(this)">
+            <h2 class="text-4xl mb-4 tracking-tighter">PHASE 1: FOUNDATION</h2>
+            <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Hardened Infrastructure & Constitution</p>
+            <div class="step-number">01</div>
+            
+            <div class="phase-content">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="check-icon">✓</span> Hardware: Mac Mini M2 Pro</div>
+                        <div class="check-item"><span class="check-icon">✓</span> Git-Based Self-healing Core</div>
+                        <div class="check-item"><span class="check-icon">✓</span> Identity: SOUL.md established</div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="check-icon">✓</span> 3-Layer Memory Stack</div>
+                        <div class="check-item"><span class="check-icon">✓</span> Automated Security Audits</div>
+                        <div class="check-item"><span class="pending-icon">_</span> Multi-User RBAC</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>GitHub Backup (Fixed R/W Scopes)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Cron Staggering (1am/2am/3am Flow)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>HEARTBEAT.md Routing (DM Only Silence)</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Multi-User RBAC (Next Move)</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Brave Search Cron Validation</span></div>
-                </div>
-            </div>
-
-            <div class="space-y-6">
-                <div class="flex items-start">
-                    <span class="step-number">01.</span>
-                    <div class="flex-1">
-                        <h4 class="text-white font-bold uppercase text-xs mb-2">The Sovereign Clone</h4>
-                        <p class="text-[11px] text-gray-400 mb-2">Forget global npm installs. Clone the source to maintain absolute control over your logic.</p>
-                        <pre><code>mkdir -p ~/openclaw && cd ~/openclaw
+                
+                <h4 class="text-xs mb-4">Core Implementation</h4>
+                <pre><code># The Sovereign Setup
 git clone https://github.com/openclaw/openclaw.git .
 pnpm install && pnpm build
 openclaw gateway install --force</code></pre>
-                    </div>
-                </div>
-
-                <div class="flex items-start">
-                    <span class="step-number">02.</span>
-                    <div class="flex-1">
-                        <h4 class="text-white font-bold uppercase text-xs mb-2">Identity & Soul (SOUL.md)</h4>
-                        <div class="principle-box">
-                            <p class="italic text-gray-300">"An agent without a constitution is just a random number generator. You must define the SOUL."</p>
-                            <ul class="text-[10px] mt-2 space-y-1 text-gray-400 mono">
-                                <li>- Master Orchestrator: Central hub for all activities.</li>
-                                <li>- Circuit Breaker: Fail after 3 consecutive errors.</li>
-                                <li>- Exponential Backoff: 10s -> 60s -> 5m progression.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- PHASE 2 -->
-        <div class="phase-card">
-            <h2 class="text-3xl mb-6">PHASE 2: REVENUE ENGINE</h2>
-            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Payment Gateway (Stripe KYC Complete)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Statement Descriptor (OZ AI PLAYBOOK)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>V3.0 Masterclass Product Ready</span></div>
-                </div>
-                <div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Digital Fulfillment Automation</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">Crypto Wallet Integration (ETH/SOL)</span></div>
-                </div>
-            </div>
+        <div class="phase-card" onclick="togglePhase(this)">
+            <h2 class="text-4xl mb-4 tracking-tighter">PHASE 2: REVENUE</h2>
+            <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Autonomous Wallet & Fulfillment</p>
+            <div class="step-number">02</div>
             
-            <div class="flex items-start">
-                <span class="step-number">03.</span>
-                <div class="flex-1">
-                    <h4 class="text-white font-bold uppercase text-xs mb-2">The Revenue Model</h4>
-                    <p class="text-[11px] text-gray-400">Inspired by the "Nat/Felix Model" – the agent manages digital fulfillment and aims for an autonomous $80k wallet balance.</p>
+            <div class="phase-content">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="check-icon">✓</span> Payment Gateway (Stripe KYC)</div>
+                        <div class="check-item"><span class="check-icon">✓</span> OZ AI Playbook Product</div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="pending-icon">_</span> Digital Fulfillment Logic</div>
+                        <div class="check-item"><span class="pending-icon">_</span> Crypto Wallet (ETH/SOL)</div>
+                    </div>
+                </div>
+                <div class="p-4 bg-purple-500/5 border border-purple-500/20 rounded text-xs text-gray-400 italic">
+                    Focus: Replicating the "Nat/Felix Model" – $80k autonomous wallet target via agent-driven sales.
                 </div>
             </div>
         </div>
 
         <!-- PHASE 3 -->
-        <div class="phase-card">
-            <h2 class="text-3xl mb-6">PHASE 3: GROWTH ENGINE</h2>
-            <div class="grid md:grid-cols-2 gap-x-8 mb-8">
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>X Integration (OAuth 1.0a Verified)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>X Posting Live (ID: 20304692...)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>X-Proactive-Pitch Cron (10am/2pm/6pm)</span></div>
-                </div>
-                <div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Telegram Routing (Separated Tiers)</span></div>
-                    <div class="check-item"><span class="check-icon">[✓]</span> <span>Brave Search (Scout Unblocked)</span></div>
-                    <div class="check-item"><span class="pending-icon">[ ]</span> <span class="text-gray-500 italic">The Hook Sequence Thread</span></div>
-                </div>
-            </div>
-
-            <div class="flex items-start">
-                <span class="step-number">04.</span>
-                <div class="flex-1">
-                    <h4 class="text-white font-bold uppercase text-xs mb-2">The Pitch Approval Flow</h4>
-                    <p class="text-[11px] text-gray-400 mb-4">The agent drafts pitches in the Oz X Social group. No post goes live without human approval via the "SEND IT" protocol.</p>
-                    <div class="p-4 bg-black border border-gray-800 rounded text-xs mono">
-                        <span class="text-cyan-400">Agent:</span> Draft: "Autonomous agents are the new SaaS..." <br/>
-                        <span class="text-green-500">Human:</span> SEND IT
+        <div class="phase-card" onclick="togglePhase(this)">
+            <h2 class="text-4xl mb-4 tracking-tighter">PHASE 3: GROWTH</h2>
+            <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">X Integration & Scout Swarms</p>
+            <div class="step-number">03</div>
+            
+            <div class="phase-content">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="check-icon">✓</span> X OAuth 1.0a Integration</div>
+                        <div class="check-item"><span class="check-icon">✓</span> Proactive Pitch Crons</div>
+                        <div class="check-item"><span class="check-icon">✓</span> Brave Search Swarms</div>
                     </div>
+                    <div class="space-y-2">
+                        <div class="check-item"><span class="check-icon">✓</span> Telegram Routing Hub</div>
+                        <div class="check-item"><span class="pending-icon">_</span> "The Hook" Sequence</div>
+                    </div>
+                </div>
+                <h4 class="text-xs mb-4">Approval Protocol</h4>
+                <div class="p-4 bg-black border border-gray-800 rounded text-xs mono">
+                    <span class="text-cyan-400">Agent:</span> Draft: "Autonomous agents are the new SaaS..." <br/>
+                    <span class="text-green-500">Human:</span> SEND IT
                 </div>
             </div>
         </div>
 
         <!-- PHASE 4 -->
-        <div class="phase-card">
-            <h2 class="text-3xl mb-6">PHASE 4: SCALING TO AUTONOMY</h2>
-            <div class="mb-8">
-                <div class="check-item"><span class="check-icon">[✓]</span> <span><b>MISSION CONTROL DASHBOARD LIVE (localhost:3000)</b></span></div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-4 ml-8">
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ Task Board</div>
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ Calendar</div>
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ PARA Memory</div>
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ Team Status</div>
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ Docs Index</div>
-                    <div class="text-[10px] text-gray-500 uppercase font-black">✓ Pixel Office</div>
+        <div class="phase-card" onclick="togglePhase(this)">
+            <h2 class="text-4xl mb-4 tracking-tighter">PHASE 4: AUTONOMY</h2>
+            <p class="text-gray-500 text-sm uppercase tracking-widest font-bold">Mission Control & Agent Council</p>
+            <div class="step-number">04</div>
+            
+            <div class="phase-content">
+                <div class="p-6 border border-cyan-500/20 bg-cyan-500/5 rounded-lg mb-8">
+                    <h3 class="text-lg mb-4">MISSION CONTROL COCKPIT LIVE</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ LIVE TASK BOARD</div>
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ PARA MEMORY</div>
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ AGENT TEAM VIEW</div>
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ DOCS INDEXING</div>
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ PIXEL OFFICE</div>
+                        <div class="text-[10px] font-black uppercase text-cyan-400">✓ CRON CALENDAR</div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="flex items-start">
-                <span class="step-number">05.</span>
-                <div class="flex-1">
-                    <h4 class="text-white font-bold uppercase text-xs mb-2">Proactive Agency (Crontab)</h4>
-                    <table class="w-full text-left text-[10px] border-collapse mt-4">
-                        <thead>
-                            <tr class="border-b border-gray-800 text-gray-500 uppercase tracking-widest">
-                                <th class="py-2">TIME (PST)</th>
-                                <th class="py-2">EVENT</th>
-                                <th class="py-2">OBJECTIVE</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-300 font-mono">
-                            <tr class="border-b border-white/5">
-                                <td class="py-2">01:00 AM</td>
-                                <td class="py-2">Memory Consolidation</td>
-                                <td class="py-2">Distill daily insights</td>
-                            </tr>
-                            <tr class="border-b border-white/5">
-                                <td class="py-2">03:00 AM</td>
-                                <td class="py-2">Security Council</td>
-                                <td class="py-2">4-Point Vulnerability Scan</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="check-item"><span class="check-icon">✓</span> Vault Auto-Sync (Hourly)</div>
+                    <div class="check-item"><span class="pending-icon">_</span> Business Council (8 Expert Swarm)</div>
                 </div>
             </div>
         </div>
 
-        <footer class="text-center py-20 border-t border-gray-800">
-            <h2 class="text-sovereign text-4xl mb-4 italic mono tracking-tighter">BUILDING IN PUBLIC.</h2>
-            <p class="text-sm text-gray-500 uppercase tracking-widest font-black">Oz Masterplan V3.3 // March 2026 Edition</p>
+        <footer class="text-center py-32 opacity-30">
+            <div class="text-xs font-black tracking-[1rem] uppercase">Stay Sovereign</div>
         </footer>
     </div>
+
+    <script>
+        // Animate progress bar on load
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('main-progress').style.width = '85%';
+            }, 500);
+        };
+
+        // Toggle phase expansion
+        function togglePhase(card) {
+            // Close others
+            document.querySelectorAll('.phase-card').forEach(p => {
+                if (p !== card) p.classList.remove('active');
+            });
+            // Toggle current
+            card.classList.toggle('active');
+            
+            // Scroll into view if opening
+            if (card.classList.contains('active')) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
+        }
+        
+        // Open first phase by default
+        setTimeout(() => {
+            document.querySelector('.phase-card').classList.add('active');
+        }, 1500);
+    </script>
 </body>
 </html>
